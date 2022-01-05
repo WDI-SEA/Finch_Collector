@@ -4,7 +4,7 @@ from django.db import models
 class KDrama(models.Model):
     title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
-    plot = models.CharField(max_length=100)
+    plot = models.CharField
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
