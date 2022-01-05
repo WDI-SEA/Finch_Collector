@@ -32,7 +32,7 @@ class HeroDetailView(APIView):
         superhero.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
-    def path(self, request, pk):
+    def patch(self, request, pk):
         superhero = get_object_or_404(Hero, pk=pk)
         updated_hero = HeroSerializer(superhero, data=request.data)
         if updated_hero.is_valid():
