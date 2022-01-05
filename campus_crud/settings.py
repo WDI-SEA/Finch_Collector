@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # MY APPS
-    'kdrama_app'
+    'kdrama_app',
+    'library'
 ]
 
 MIDDLEWARE = [
