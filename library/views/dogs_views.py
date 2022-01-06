@@ -4,15 +4,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import DogSerializer
-from .models import Dog
+from ..models.dog import Dog
+from ..serializers import DogSerializer
 
-
-# Create your views here.
-# def index(request):
-#     dogs = Dog.objects.all()
-#     data = { 'dogs': list(dogs.values()) }
-#     return JsonResponse(data)
 
 class DogsView(APIView):
     
@@ -43,7 +37,6 @@ class DogsDetailView(APIView):
 
     def patch(self, request, pk):
         dog = get_object_or_404(Dog, pk=pk)
-        updated_dog = DogSerializer(dog, data=request.data)
         if updated_dog.is_valid():
             updated_dog.save()
             return Response(updated_dog.data)

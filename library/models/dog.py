@@ -9,11 +9,11 @@ class Dog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.dog_name
+        return f"{self.dog_name}"
 
-    def as_dict(self):
-        return {
-            'id': self.id,
-            'dog_name': self.dog_name,
-            'breed': self.breed
-        }
+    # def as_dict(self):
+    #     return {
+    #         'id': self.id,
+    #         'dog_name': self.dog_name,
+    #         'breed': self.breed
+    #     }
