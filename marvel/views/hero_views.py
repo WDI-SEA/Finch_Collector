@@ -1,15 +1,15 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from ..serializers import HeroSerializer
+from ..serializers import HeroSerializer, HeroReadSerializer
 from ..models.superhero import Hero
 
-class HeroView(APIView):
+class Heroes(APIView):
     def get(self, request):
-        superhero = Hero.objects.all()
-        data = HeroSerializer(superhero, many=True).data
+        superhero = Hero.objects.all()[:10]
+        data = HeroReadSerializer(superhero, many=True).data
         return Response(data)
 
     def post(self, request):
@@ -21,10 +21,10 @@ class HeroView(APIView):
         else:
             return Response(superhero.errors, status=status.HTTP_400_BAD_REQUEST)
     
-class HeroDetailView(APIView):
+class HeroDetail(APIView):
     def get(self, request, pk):
         superhero = get_object_or_404(Hero, pk=pk)
-        data = HeroSerializer(superhero).data
+        data = HeroReadSerializer(superhero).data
         return Response(data)
 
     def delete(self, request, pk):
