@@ -15,3 +15,7 @@ class Dog(models.Model):
             'name': self.name,
             'breed': self.breed
         }
+class Owner(models.Model):
+    name = models.CharField(max_length=100)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
