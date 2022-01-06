@@ -4,9 +4,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import BirdSerializer
+from .serializers import AviarySerializer, BirdSerializer
 
-from .models import Bird
+from .models import Aviary, Bird
 
 class BirdsView(APIView):
     def get(self, request):
@@ -43,3 +43,9 @@ class BirdDetailView(APIView):
             return Response(updated_bird.data)
         else:
             return Response(updated_bird.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class AviaryView(APIView):
+    def get(self, request):
+        aviaries = Aviary.objects.all()
+        data = AviarySerializer(aviaries, many=True).data
+        return Response(data)
