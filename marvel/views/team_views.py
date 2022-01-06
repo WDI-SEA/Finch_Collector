@@ -16,7 +16,7 @@ class Teams(APIView):
     def post(self, request):
         team = TeamSerializer(data=request.data)
         if team.is_valid():
-            team.saved()
+            b = team.saved()
             return Response(team.data, status=status.HTTP_201_CREATED)
         else:
             return Response(team.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -31,7 +31,7 @@ class TeamDetail(APIView):
         team = get_object_or_404(Team, pk=pk)
         ms = TeamSerializer(team, data=request.data)
         if ms.is_valid():
-            ms.save()
+            b = ms.save()
             return Response(ms.data)
         return Response(ms.errors, status=status.HTTP_400_BAD_REQUEST)
 
