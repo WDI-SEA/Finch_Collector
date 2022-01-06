@@ -7,5 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', views.index, name='index'),
     path('', include('second_app.urls')),
-    path('cats/', include('library.urls'))
+    path('cats/', include('library.urls')),
+    path('owner/', include('library.urls'))
 ]
